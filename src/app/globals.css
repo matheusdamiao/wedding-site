@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 @import "tailwindcss";
+
+:root {
+  --font-geist-sans: 'Cinzel', serif;
+}
 
 :root {
   --background: #ffffff;
@@ -12,15 +17,27 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.cinzel-regular {
+  font-family: "Cinzel", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
+.cinzel-bold {
+  font-family: "Cinzel", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.cinzel-black {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+
 body {
-  background: var(--background);
+  background: #fffdf8;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cinzel', serif;
 }
