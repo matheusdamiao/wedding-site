@@ -1,0 +1,44 @@
+[
+    {
+        "nome": "Qualquer valor que tocar o seu coração",
+        "price": "R$ ??,??",
+        "photo": "/images/gifts/misterious_gift.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Uma diária extra de Ofurô na nossa Lua de Mel",
+        "price": "R$ 100,00",
+        "photo": "/images/gifts/mulher-em-banho-nordico-em-frente-uma-floresta.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Uma diária da Pousada na nossa Lua de Mel",
+        "price": "R$ 595,00",
+        "photo": "/images/gifts/interior-pequeno-quarto-de-hotel-com-cama-de-casal-e-banheiro.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Um dia inteiro de Passeio de Barco por Ilha Grande",
+        "price": "R$ 230,00",
+        "photo": "/images/gifts/full-shot-mulher-deitada-em-um-barco.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Nosso primeiro jantar romântico de recém-casados",
+        "price": "R$ 350,00",
+        "photo": "/images/gifts/casal-de-amantes-jantar-romantico-em-casa.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Cueca sexy para a noite de núpcias",
+        "price": "R$ 70,00",
+        "photo": "/images/gifts/roupa-intima.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Jogar o buquê na sua direção",
+        "price": "R$ 400,00",
+        "photo": "/images/gifts/pexels-becerragoveaphoto-6918167.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    }
+]

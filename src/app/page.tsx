@@ -1,17 +1,25 @@
 'use client'
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
+import { ChangeEvent, useEffect, useState } from "react";
+import checkIcon from './../../public/icon-park-solid_check-one.svg'
+import closeIcon from './../../public/material-symbols_close-rounded.svg'
+import copyIcon from './../../public/lucide_copy.svg'
+import giftList from './../../public/giftList.json'
+import giftIcon from './../../public/bxs_gift.svg'
 
 export default function Home() {
-      const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+
+
+    
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     useEffect(() => {
     const targetDate = new Date('2026-01-03T16:00:00'); // 3 January 2025, 4pm local time
 
     const updateCountdown = () => {
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
-      console.log('difference', difference)
+      // console.log('difference', difference)
 
       if (difference <= 0) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -32,8 +40,146 @@ export default function Home() {
     return () => clearInterval(timer);
     }, []);
 
+
+    const [guestName, setGuestName] = useState<string>('')
+    const guests = [
+      'Luana de Paula Antunes Damião',
+      'Ana Lúcia',
+      'Luana da Silva Sauro',
+      'Matheus Oliveira Damião',
+      'Olívia de Paula Antunes Damião',
+      'Hugo de Paula Antunes Damião'
+    ]
+
+    const [filteredGuestNames, setfilteredGuestNames] = useState<string[]>([''])
+
+    const updateGuestName = (e: ChangeEvent<HTMLInputElement>) => {
+      setGuestName(e.target.value);
+    }
+
+    const [selectedGuest, setSelectedGuest] = useState<string>('')
+
+    useEffect(()=>{
+       if(guestName.length > 3 && guestName !== selectedGuest) {
+        const normalize = (s: string) =>
+          s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+        let filtered = guests.filter((guest) =>
+          normalize(guest).includes(normalize(guestName))
+        );
+        console.log('filtered', filtered)
+        setfilteredGuestNames(filtered)
+      } 
+      if(guestName.length < 3) {
+        setfilteredGuestNames([])
+        setSelectedGuest('')
+      } 
+      
+    },[guestName, selectedGuest])
+
+    const [IsPresenceConfirmed, setIsPresenceConfirmed] = useState(false);
+    
+    const confirmPresence = ()=>{
+      setIsPresenceConfirmed(true);
+      try {
+        
+      } catch (error) {
+        
+      }
+    }
+
+    const [IsPixCopied, setIsPixCopied] = useState(false);
+      const copyToClipBoard = async () => {
+        try {
+          const text = choseGift.pixKey;
+          if (!text) return;
+
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+          }
+
+          setIsPixCopied(true)
+        } catch (error) {
+          console.error(error);
+          alert('Não foi possível copiar o código Pix');
+        }
+      }
+    
+
+
+    const [choseGift, setChoseGift] = useState({name: '', price: '', pixKey: ''})
   return (
-    <div>
+    <div className="relative">
+
+      {IsPresenceConfirmed ? 
+        <div class="w-full bg-[#6666] top-0 h-full fixed z-[999999999999999999999] flex items-center justify-center"> 
+
+          <div className="max-w-[600px] flex flex-col bg-white h-full lg:gap-[40px] lg:h-[334px] lg:px-[24px] lg:py-[24px]">
+            <h5 className="text-[14px]">Confirmação de Presença</h5>
+            <div className="flex flex-col gap-[24px]">
+              <div class="flex gap-4">
+                <img src={checkIcon.src} alt="" />
+                <h4 className="text-[#222420] cinzel-bold text-lg">Sua presença está confirmada!</h4>
+              </div>
+              <p className="text-[14px]">Que alegria saber que você estará conosco neste capítulo tão importante da nossa história</p>
+              <p className="text-[14px]"> Sua presença tornará esse dia ainda mais especial.</p>
+            </div>
+            <button onClick={ ()=> setIsPresenceConfirmed(false)} class="w-full h-[58px] text-lg lg:bg-[#EAEAE3] cursor-pointer "> Fechar </button>
+
+          </div>
+
+        </div> 
+        :
+        null
+      }
+
+        {choseGift.pixKey !== '' ? 
+        <div class="w-full bg-[#6666] top-0 h-full fixed z-[999999999999999999999] flex items-center justify-center"> 
+
+          <div class="max-w-[650px] rounded-[6px] w-full flex flex-col bg-white h-full lg:gap-[32px] lg:h-[338px] lg:px-[24px] lg:py-[24px]">
+            <div className="flex justify-between">
+              <div className="flex gap-4">
+                <img src={giftIcon.src} alt="" />
+                <h5 className="text-[14px]">Presente selecionados</h5>
+              </div>
+              <button className="cursor-pointer" onClick={ ()=> {
+                setChoseGift({name: "", pixKey: "", price: ""})
+                setIsPixCopied(false)
+                } }><img src={closeIcon.src} alt="" /></button>
+            </div>
+            <div className="flex flex-col gap-[24px]">
+              <div class="flex gap-4">
+                <h4 className="text-[#222420] cinzel-bold text-lg">{choseGift.price}</h4>
+                <p className="text-[16px]">{choseGift.name}</p>
+              </div>
+              <div className="text-[14px] w-full bg-[#F5F5F5] px-[24px] py-[24px]">
+                <p class="break-all">
+                  {choseGift.pixKey}
+                </p>
+              </div>
+            </div>
+            <button onClick={copyToClipBoard} class="flex gap-[10px] items-center justify-center py-[17px] w-full h-[58px] text-lg lg:bg-[#EAEAE3] cursor-pointer ">
+              <img src={copyIcon.src} alt="" />
+               {!IsPixCopied ? 'Copiar Código Pix' : 'Pix Copiado'}
+            </button>
+
+          </div>
+
+        </div> 
+        :
+        null
+      }
+
+
       <div
         className="fixed z-[999999] top-0 left-0 right-0 bg-white/60 backdrop-blur-md backdrop-saturate-125 border border-white/20"
         style={{ WebkitBackdropFilter: 'blur(8px)', backdropFilter: 'blur(8px)' }}
@@ -142,8 +288,66 @@ export default function Home() {
       <div className="py-[150px]">
          <div className="flex flex-col items-center justify-center text-center ">
             <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+            <div class="flex flex-col align-center justify-center gap-[45px]">
+              <div class="flex flex-col align-center justify-center">
+                <h3 class="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Confirmar Presença</h3>
+                <h4 class="text-[#222420] cinzel-regular text-lg text-center">Digite seu nome e confirme sua presença</h4>
+              </div>
+              <div class="flex flex-col align-center justify-center lg:w-[668px] lg:gap-[15px]">
+                <div class="relative">
+                  <input value={guestName} onChange={updateGuestName} type="text" id='searchName' className=" w-full placeholder: h-[50px] bg-[#F5F5F5] px-[12px] py-[15px]" placeholder="Digite seu nome..." />
+                  {filteredGuestNames.length > 0 ?
+                  <div class="absolute z-[99999] w-full top-[50px] bg-white">
+                    {filteredGuestNames.map((name)=>{
+                    return (
+                      <div key={name} onClick={() => {
+                        setGuestName(name)
+                        setSelectedGuest(name)
+                        setfilteredGuestNames([])
+                        }} className="w-full hover:cursor-pointer hover:bg-[#969F90] transition-all   hover:text-white hover:font-bold border-[#F5F5F5] border-2 py-[16px] text-start  px-[12px] text-[#222420] text-[14px]"> 
+                        {name}
+                      </div>
+                    )
+                  })} </div> : ''}
+                 </div>
+                <button onClick={confirmPresence} class={`w-full h-[58px]  text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'lg:bg-[#969F90] cursor-pointer text-white font-bold': 'lg:bg-[#EAEAE3]'}`}> Confirmo minha presença </button>
+              </div>
+            </div>
           </div>
       </div>
+
+
+       <div className="py-[150px]">
+         <div className="flex flex-col items-center justify-center text-center ">
+            <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+            <div class="flex flex-col align-center justify-center gap-[45px]">
+                <div class="flex flex-col align-center justify-center">
+                  <h3 class="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Lista de Presentes</h3>
+                  <h4 class="text-[#222420] cinzel-regular text-lg lg:pt-[24px] text-center max-w-[1175px] mx-auto"> Nosso lar já está cheio de amor (e de tudo o que precisamos!). Criamos essa lista divertida para quem desejar nos presentear. O valor será revertido em Pix — um gesto de carinho que fará parte dessa nova fase.</h4>
+                </div>
+                <div className="flex flex-wrap items-center justify-center gap-12">
+                  {giftList.map((gift)=>{
+                    return (
+                      <div className="bg-[#FFFF] px-[24px] py-[24px] w-[339px] h-[436px] gap-[16px] flex flex-col border-[#F5F5F5] border-[1px]" >
+                        <img src={gift.photo} alt="" />
+                        <div className="flex flex-col items-start gap-[16px]">
+                          <h5 className="text-left text-lg">
+                          {gift.nome}
+                          </h5>
+                          <p className="text-[20px] text-[#346017] cinzel-bold">
+                          {gift.price}
+                          </p>
+                        </div>
+                        <button onClick={()=> setChoseGift({name: gift.nome, pixKey: gift.pixKey, price: gift.price})} class="bg-[#EAECE9] w-full hover:bg-[#5D6955] hover:text-white hover:font-bold rounded-[6px] transition-all h-[58px] cursor-pointer ">Presentear</button>
+                      </div>
+                    )
+                  })}
+                </div>
+            </div>  
+          </div>
+        </div>          
+
+
     </div>
   );
 }
