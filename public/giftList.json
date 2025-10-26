@@ -40,5 +40,53 @@
         "price": "R$ 400,00",
         "photo": "/images/gifts/pexels-becerragoveaphoto-6918167.png",
         "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Ajuda para a aposentadoria dos noivos",
+        "price": "R$ 1200,00",
+        "photo": "/images/gifts/empresario-trabalhando-com-contas.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Garantindo o sol na cerimônia",
+        "price": "R$ 200,00",
+        "photo": "/images/gifts/foto-de-baixo-angulo-de-uma-arvore-de-folhas-verdes-sob-um-ceu-claro.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Adote um boleto atrasado",
+        "price": "R$ 390,00",
+        "photo": "/images/gifts/documento-de-remessa-pagina-inicial-da-conexao-laptop.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Se por uma intervenção divina você se sentir tocado",
+        "price": "R$ 2500,00",
+        "photo": "/images/gifts/oracao-espiritual-maos-sol-brilhar-com-obscurecido-bonito-por-sol.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Seja nosso parente favoritos",
+        "price": "R$ 1000,00",
+        "photo": "/images/gifts/felizes-pais-maduros-se-divertindo-enquanto-abracam-seu-filho-adulto-que-veio-visita-los-em-casa.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Pra não dizer que não te dei nada, toma aqui 50 reais",
+        "price": "R$ 50,00",
+        "photo": "/images/gifts/mulher-turva-mostrando-o-presente.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Kit ressaca para os noivos",
+        "price": "R$ 60,00",
+        "photo": "/images/gifts/par-jovem-sentar-se-cama-cobertura-seu-um-olho.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
+    },
+    {
+        "nome": "Tampão de ouvido para noiva enquanto noivo ronca",
+        "price": "R$ 60,00",
+        "photo": "/images/gifts/jovem-que-nao-consegue-dormir-porque-o-marido-ronca.png",
+        "pixKey": "00020126580014BR.GOV.BCB.PIX0136teste@exemplo.com5204000053039865400005802BR5920Luana & Matheus6009Niterói62070503***6304ABCD"
     }
 ]

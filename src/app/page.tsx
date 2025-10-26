@@ -1,15 +1,28 @@
 'use client'
 import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useActionState, useEffect, useState } from "react";
 import checkIcon from './../../public/icon-park-solid_check-one.svg'
 import closeIcon from './../../public/material-symbols_close-rounded.svg'
 import copyIcon from './../../public/lucide_copy.svg'
 import giftList from './../../public/giftList.json'
 import giftIcon from './../../public/bxs_gift.svg'
+import dressCode from './../../public/images/dresscode.svg'
+import dressCode2 from './../../public/images/bridal-shower.svg'
+import dressCode3 from './../../public/images/wedding-dress.svg'
+import dressCode4 from './../../public/images/champagne.svg'
+
+import { appendSheetData, getSheetData } from "./actions/google-sheets.action";
+import Maps from "@/components/maps";
 
 export default function Home() {
 
 
+   const initialState = {
+    success: '',
+    failed: undefined,
+  }
+
+   const [IsConfirmed, formAction, IsConfirming] = useActionState(appendSheetData, initialState)
 
     
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -82,6 +95,7 @@ export default function Home() {
     const confirmPresence = ()=>{
       setIsPresenceConfirmed(true);
       try {
+        // formAction.apply()
         
       } catch (error) {
         
@@ -117,6 +131,16 @@ export default function Home() {
 
 
     const [choseGift, setChoseGift] = useState({name: '', price: '', pixKey: ''})
+
+
+    useEffect(()=>{
+      if(IsConfirmed?.success){
+        setIsPresenceConfirmed(true)
+        setGuestName('')
+        setSelectedGuest('')
+      }
+    },
+  [IsConfirmed?.success])
   return (
     <div className="relative">
 
@@ -294,23 +318,28 @@ export default function Home() {
                 <h4 class="text-[#222420] cinzel-regular text-lg text-center">Digite seu nome e confirme sua presença</h4>
               </div>
               <div class="flex flex-col align-center justify-center lg:w-[668px] lg:gap-[15px]">
-                <div class="relative">
-                  <input value={guestName} onChange={updateGuestName} type="text" id='searchName' className=" w-full placeholder: h-[50px] bg-[#F5F5F5] px-[12px] py-[15px]" placeholder="Digite seu nome..." />
-                  {filteredGuestNames.length > 0 ?
-                  <div class="absolute z-[99999] w-full top-[50px] bg-white">
-                    {filteredGuestNames.map((name)=>{
-                    return (
-                      <div key={name} onClick={() => {
-                        setGuestName(name)
-                        setSelectedGuest(name)
-                        setfilteredGuestNames([])
-                        }} className="w-full hover:cursor-pointer hover:bg-[#969F90] transition-all   hover:text-white hover:font-bold border-[#F5F5F5] border-2 py-[16px] text-start  px-[12px] text-[#222420] text-[14px]"> 
-                        {name}
-                      </div>
-                    )
-                  })} </div> : ''}
-                 </div>
-                <button onClick={confirmPresence} class={`w-full h-[58px]  text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'lg:bg-[#969F90] cursor-pointer text-white font-bold': 'lg:bg-[#EAEAE3]'}`}> Confirmo minha presença </button>
+                 <form action={formAction} >
+                  <div class="relative">
+                    <input value={guestName} onChange={updateGuestName} type="text" name='nome' id='searchName' className=" w-full placeholder: h-[50px] bg-[#F5F5F5] px-[12px] py-[15px]" placeholder="Digite seu nome..." />
+                    {filteredGuestNames.length > 0 ?
+                    <div class="absolute z-[99999] w-full top-[50px] bg-white">
+                      {filteredGuestNames.map((name)=>{
+                      return (
+                        <div key={name} onClick={() => {
+                          setGuestName(name)
+                          setSelectedGuest(name)
+                          setfilteredGuestNames([])
+                          }} className="w-full hover:cursor-pointer hover:bg-[#969F90] transition-all   hover:text-white hover:font-bold border-[#F5F5F5] border-2 py-[16px] text-start  px-[12px] text-[#222420] text-[14px]"> 
+                          {name}
+                        </div>
+                      )
+                    })} </div> : ''}
+                  </div>
+               
+                   <button class={`w-full h-[58px]  text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'lg:bg-[#969F90] cursor-pointer text-white font-bold': 'lg:bg-[#EAEAE3]'}`}>
+                    {IsConfirming ? 'Carregando... ' : IsConfirmed?.success ? 'Presença confirmada!' : 'Confirmo minha presença'}
+                    </button>
+                </form>
               </div>
             </div>
           </div>
@@ -345,9 +374,90 @@ export default function Home() {
                 </div>
             </div>  
           </div>
+        </div>      
+
+
+
+        <div className="py-[150px]">
+          <div className="flex flex-col items-center justify-center text-center ">
+              <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+              <div class="flex flex-col align-center justify-center gap-[45px]">
+                  <div class="flex flex-col align-center justify-center">
+                    <h3 class="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Como Chegar</h3>
+                    <div class="lg:gap-[54px] flex flex-col lg:pt-[24px]">
+                      <div class="flex flex-col gap-[24px] text-lg">
+                        <p>
+                          A cerimônia e a festa acontecerão no <b>Solar de Gração</b>, um espaço encantador, cercado pela natureza, localizado na <b>Estrada Caetano Monteiro, 916 — Pendotiba, Niterói - RJ.</b>
+                        </p>
+                        <p>
+                       O local conta com estacionamento, e também é fácil chegar por aplicativo — basta buscar pelo nome do Solar de Gração.
+                        </p>
+                        <p>
+                          <b>As portas estarão abertas a partir das 16h, e a cerimônia terá início pontualmente às 16h30.</b>
+                        </p>
+                        <p>
+                          Tudo foi preparado com carinho para que cada convidado aproveite cada instante desse dia especial.
+                        </p>
+                     </div>
+                     <Maps/>
+                   </div>
+                  </div>          
+              </div>     
+            </div>
         </div>          
 
 
+         <div className="py-[150px]">
+            <div className="flex flex-col items-center justify-center text-center ">
+                <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+                <div class="flex flex-col align-center justify-center gap-[45px]">
+                   <h3 class="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Dicas</h3>
+                </div>
+
+                <div className="flex flex-wrap items-center lg:pt-[80px] justify-center gap-[100px] max-w-[1200px]">
+
+                  <div className="flex gap-[8px] max-w-[400px]">
+                    <img src={dressCode.src} alt="" />
+                    <p>
+                     <b>Dress Code</b> : Esporte Fino.
+                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                    </p>
+                  </div>
+
+                  <div className="flex gap-[8px]  max-w-[400px]">
+                    <img src={dressCode2.src} alt="" />
+                    <p>
+                     <b>Dress Code</b> : Esporte Fino.
+                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                    </p>
+                  </div>
+
+                  <div className="flex gap-[8px]  max-w-[400px]">
+                    <img src={dressCode3.src} alt="" />
+                    <p>
+                     <b>Dress Code</b> : Esporte Fino.
+                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                    </p>
+                  </div>
+
+
+                  <div className="flex gap-[8px]  max-w-[400px]">
+                    <img src={dressCode4.src} alt="" />
+                    <p>
+                     <b>Dress Code</b> : Esporte Fino.
+                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                    </p>
+                  </div>  
+
+
+                </div>
+            </div>             
+          </div>  
+
+
+
+
+              
     </div>
   );
 }
