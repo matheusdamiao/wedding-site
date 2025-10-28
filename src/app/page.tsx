@@ -4,7 +4,7 @@ import checkIcon from './../../public/icon-park-solid_check-one.svg'
 import closeIcon from './../../public/material-symbols_close-rounded.svg'
 import copyIcon from './../../public/lucide_copy.svg'
 import giftList from './../../public/giftList.json'
-import giftIcon from './../../public/bxs_gift.svg'
+import giftIcon from './../../public/bxs_gift1.svg'
 import dressCode from './../../public/images/dresscode.svg'
 import dressCode2 from './../../public/images/bridal-shower.svg'
 import dressCode3 from './../../public/images/wedding-dress.svg'
@@ -143,6 +143,14 @@ export default function Home() {
       }
     },
   [IsConfirmed?.success])
+
+  // simple scroll-to-top button injected into the page
+  useEffect(() => {
+    
+  }, []);
+
+  const handleClick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <div id='hero' className="relative ">
 
@@ -171,7 +179,7 @@ export default function Home() {
         {choseGift.pixKey !== '' ? 
         <div className="w-full bg-[#6666] top-0 h-full fixed z-[999999999999999999999] flex items-center justify-center"> 
 
-          <div className="lg:max-w-[650px] rounded-[6px] mx-[16px] h-min w-full flex flex-col gap-[32px] bg-white lg:gap-[32px] lg:h-[338px] px-[24px] py-[24px]">
+          <div className="lg:max-w-[650px] rounded-[6px] mx-[16px] h-min w-full flex flex-col gap-[32px] bg-white lg:gap-[32px]  px-[24px] py-[24px]">
             <div className="flex justify-between">
               <div className="flex gap-4">
                 <img src={giftIcon.src} alt="" />
@@ -211,7 +219,7 @@ export default function Home() {
         style={{ WebkitBackdropFilter: 'blur(8px)', backdropFilter: 'blur(8px)' }}
       >
         <div className="flex items-center justify-center h-[8svh] pt-4 z-[9999999] px-[16px]">
-          <a href="#hero"><img src="/images/logo-topo.svg" className="px-4 w-full max-w-[450px]" alt="" /></a>
+          <a onClick={()=>handleClick()}><img src="/images/logo-topo.svg" className="px-4 w-full max-w-[450px]" alt="" /></a>
         </div>
 
         <nav className="lg:flex items-center hidden flex-wrap flex-col lg:flex-row z-[9999999] text-sm lg:text-xl my-4  justify-center gap-2 lg:gap-20">
@@ -230,7 +238,7 @@ export default function Home() {
         </nav>
         <nav className="flex items-center lg:hidden flex-wrap flex-row z-[9999999] text-sm lg:text-xl my-4 lg:mt-10 justify-between px-[16px] gap-2 lg:gap-20">
           <a href="#presenca" className="inline-block border-b-2 border-transparent hover:border-current transition-colors duration-200">
-            Presença
+            Confirmar
           </a>
           <a href="#lista" className="inline-block border-b-2 border-transparent hover:border-current transition-colors duration-200">
             Presentear
@@ -282,7 +290,7 @@ export default function Home() {
               <p className="text-2xl">
                 Com o coração repleto de amor e gratidão,<br /> <b> convidamos você para viver conosco um dos momentos mais especiais da nossa história.</b>
               </p>
-              <div className="flex flex-col gap-[24px] text-lg">
+              <div className="flex flex-col gap-[24px] text-base">
                 <p>
                   Um dia de amor, de risadas, de encontros e de tudo aquilo que faz a vida valer a pena.
                 </p>
@@ -300,7 +308,7 @@ export default function Home() {
                 </p>
                 
               </div>
-              <p className="text-lg">
+              <p className="text-base">
                   Esperamos por você para compartilhar esse momento tão especial.
                 </p>
             </div>
@@ -331,13 +339,13 @@ export default function Home() {
       </div>
 
 
-      <div id='presenca' className="py-[50px] lg:py-[150px]">
+      <div id='presenca' className="pb-[50px] pt-[150px] lg:py-[150px]">
          <div className="flex flex-col items-center justify-center text-center ">
-            <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+            <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
             <div className="flex flex-col align-center justify-center gap-[45px] px-[16px]">
               <div className="flex flex-col align-center justify-center">
                 <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Confirmar Presença</h3>
-                <h4 className="text-[#222420] cinzel-regular text-lg text-center">Digite seu nome e confirme sua presença</h4>
+                <h4 className="text-[#222420] cinzel-regular text-base pt-[24px] text-center">Digite seu nome e confirme sua presença</h4>
               </div>
               <div className="flex flex-col align-center justify-center lg:w-[668px] lg:gap-[15px]">
                  <form action={formAction} >
@@ -368,13 +376,13 @@ export default function Home() {
       </div>
 
 
-       <div id='lista' className="py-[150px]">
+       <div id='lista' className="pb-[50px] pt-[150px]">
          <div className="flex flex-col items-center justify-center text-center ">
-            <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+            <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
             <div className="flex flex-col align-center justify-center gap-[45px] px-[16px]">
                 <div className="flex flex-col align-center justify-center gap-[20px]">
                   <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Lista de Presentes</h3>
-                  <h4 className="text-[#222420] cinzel-regular text-lg lg:pt-[24px] text-center max-w-[1175px] mx-auto"> Nosso lar já está cheio de amor (e de tudo o que precisamos!). Criamos essa lista divertida para quem desejar nos presentear. O valor será revertido em Pix — um gesto de carinho que fará parte dessa nova fase.</h4>
+                  <h4 className="text-[#222420] cinzel-regular text-base lg:pt-[24px] text-center max-w-[1175px] mx-auto"> Nosso lar já está cheio de amor (e de tudo o que precisamos!). Criamos essa lista divertida para quem desejar nos presentear. <b> O valor será revertido em Pix </b> — um gesto de carinho que fará parte dessa nova fase.</h4>
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-12">
                   {giftList.map((gift)=>{
@@ -382,7 +390,7 @@ export default function Home() {
                       <div key={gift.pixKey} className="bg-[#FFFF] px-[24px] py-[24px] w-[339px] h-[436px] gap-[16px] flex flex-col border-[#F5F5F5] border-[1px]" >
                         <img src={gift.photo} alt="" />
                         <div className="flex flex-col items-start gap-[16px]">
-                          <h5 className="text-left text-lg">
+                          <h5 className="text-left text-base">
                           {gift.nome}
                           </h5>
                           <p className="text-[20px] text-[#346017] cinzel-bold">
@@ -402,12 +410,12 @@ export default function Home() {
 
         <div id='localizacao' className="py-[150px]">
           <div className="flex flex-col items-center justify-center text-center px-[16px]">
-              <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+              <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
               <div className="flex flex-col align-center justify-center gap-[45px]">
                   <div className="flex flex-col align-center justify-center ">
                     <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Como Chegar</h3>
-                    <div className="lg:gap-[54px] flex flex-col py-[40px] lg:pt-[24px]">
-                      <div className="flex flex-col gap-[24px] text-lg">
+                    <div className="lg:gap-[54px] flex flex-col py-[40px] pt-[24px]">
+                      <div className="flex flex-col gap-[14px] text-base">
                         <p>
                           A cerimônia e a festa acontecerão no <b>Solar de Gração</b>, um espaço encantador, cercado pela natureza, localizado na <b>Estrada Caetano Monteiro, 916 — Pendotiba, Niterói - RJ.</b>
                         </p>
@@ -429,45 +437,42 @@ export default function Home() {
         </div>          
 
 
-         <div id='dicas' className="py-[50px] lg:pb-[200px] px-[16px]">
+         <div id='dicas' className="py-[150px] lg:pb-[200px] px-[16px]">
             <div className="flex flex-col items-center justify-center text-center ">
-                <img src="/images/flower-division.png" className="w-[350px] pt-[4px] pb-[45px]" alt="" />
+                <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
                 <div className="flex flex-col align-center justify-center gap-[45px]">
                    <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Dicas</h3>
                 </div>
 
-                <div className="flex flex-wrap items-center pt-[60px] lg:pt-[80px] justify-center gap-[100px] max-w-[1200px]">
+                <div className="flex flex-wrap text-base items-center pt-[60px] lg:pt-[80px] justify-center gap-[100px] max-w-[1200px]">
 
-                  <div className="flex gap-[8px] max-w-[400px]">
+                  <div className="flex gap-[24px] text-left max-w-[450px]">
                     <img src={dressCode.src} alt="" />
                     <p>
                      <b>Dress Code</b> : Esporte Fino.
-                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                      Não é necessário usar paletó (é verão!). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
                     </p>
                   </div>
 
-                  <div className="flex gap-[8px]  max-w-[400px]">
+                  <div className="flex gap-[24px] text-left  max-w-[450px]">
                     <img src={dressCode2.src} alt="" />
                     <p>
-                     <b>Dress Code</b> : Esporte Fino.
-                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                     <b>O verde e o marrom foram escolhidos para as madrinhas e os padrinhos, </b> respectivamente. Por isso, pedimos gentilmente que os convidados optem por outras cores.
                     </p>
                   </div>
 
-                  <div className="flex gap-[8px]  max-w-[400px]">
+                  <div className="flex gap-[24px] text-left  max-w-[450px]">
                     <img src={dressCode3.src} alt="" />
                     <p>
-                     <b>Dress Code</b> : Esporte Fino.
-                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                     <b>Evite usar vestidos brancos, off white ou nude. </b> Queremos reservar essas cores especiais só para a noiva.
                     </p>
                   </div>
 
 
-                  <div className="flex gap-[8px]  max-w-[400px]">
+                  <div className="flex gap-[24px] text-left  max-w-[450px]">
                     <img src={dressCode4.src} alt="" />
                     <p>
-                     <b>Dress Code</b> : Esporte Fino.
-                      Não é necessário usar paletó (é verão! ). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
+                    <b> Aproveitem o grande dia!</b> Curtam cada momento, celebrem com alegria e façam parte dessa festa tão especial ao nosso lado.
                     </p>
                   </div>  
 
@@ -477,7 +482,7 @@ export default function Home() {
           </div>  
 
 
-         <div className="px-[16px] flex flex-col items-center justify-center relative gap-[100px] lg:gap-[150px] h-[900px] lg:h-[900px] py-[50px]  w-full overflow-hidden">
+         <div className="px-[16px] flex flex-col items-center justify-center relative gap-[100px] lg:gap-[150px] h-[700px] lg:h-[900px] py-[50px]  w-full overflow-hidden">
              <h4 className="text-[24px] text-[#222420] cinzel-bold text-center z-[999999999999999999999]">“Sonho que se sonha junto é realidade.”</h4>     
             <img src={logoLM.src} alt="" className="max-w-[204px] z-[99999999999999999]" />    
             <img src={flowerBottom.src} alt="" className="absolute lg:h-[1018.22px] right-[-50px] bottom-[-100px] h-[590px] lg:w-[790px] lg:right-[20px] lg:bottom-[0px] lg:overflow-hidden z-[9999]"/>      
