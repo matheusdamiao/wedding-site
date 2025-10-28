@@ -79,7 +79,7 @@ export default function Home() {
         const normalize = (s: string) =>
           s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
-        let filtered = guests.filter((guest) =>
+        const filtered = guests.filter((guest) =>
           normalize(guest).includes(normalize(guestName))
         );
         console.log('filtered', filtered)

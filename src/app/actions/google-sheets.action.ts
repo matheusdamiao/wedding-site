@@ -32,7 +32,7 @@ export async function getSheetData() {
 }
 
 // append data
-export async function appendSheetData(prevState: any, values: FormData) {
+export async function appendSheetData(prevState, values: FormData) {
   const glSheets = await getGoogleSheets();
 
   
