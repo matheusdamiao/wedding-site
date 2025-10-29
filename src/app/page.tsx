@@ -11,10 +11,14 @@ import dressCode3 from './../../public/images/wedding-dress.svg'
 import dressCode4 from './../../public/images/champagne.svg'
 import flowerBottom from './../../public/images/Luana-Photoroom.png'
 import flowerBottom2 from './../../public/images/Luana-Photoroom2.png'
+import location from './../../public/location.svg'
+import time from './../../public/time.svg'
+import car from './../../public/bx_car.svg'
 
 import logoLM from './../../public/logo-lm.svg'
 import { appendSheetData } from "./actions/google-sheets.action";
 import Maps from "@/components/maps";
+
 
 export default function Home() {
 
@@ -59,11 +63,101 @@ export default function Home() {
     const [guestName, setGuestName] = useState<string>('')
     const guests = [
       'Luana de Paula Antunes Damião',
-      'Ana Lúcia',
-      'Luana da Silva Sauro',
       'Matheus Oliveira Damião',
-      'Olívia de Paula Antunes Damião',
-      'Hugo de Paula Antunes Damião'
+      'Ana Antunes',
+      'Flávio Barbosa',
+      'Letícia de Paula Antunes Barbosa',
+      'Ana Luísa Miranda da Silva',
+      'Vanessa Cupulille',
+      'Marcos Cunha',
+      'Maya Cunha',
+      'Lucia Helena Cupulille Baptista',
+      'Maria Helena',
+      'Roberto Júnior',
+      'Natália Carapenticow',
+      'Ana Beatriz Cupulille',
+      'Maycon Luiz Eugênio da Silva',
+      'Sophia Mariucha',
+      'Claudia Helena Cupulille Baptista',
+      'Milena Antunes',
+      'Yuri Seoane',
+      'Luna Seoane',
+      'Catarina Seoane',
+      'Angela Cristina Antunes',
+      'José Manoel de Souza e Silva',
+      'Afranio Antunes',
+      'Adriana Antunes',
+      'Diogo Antunes',
+      'Cecília Sanches',
+      'Lucas Antunes',
+      'Beatriz Jevoux',
+      'Amanda Mendes',
+      'Alexandre Almeida',
+      'Isis Nascimento',
+      'Yara Ligia Andrade Lemos',
+      'Bruno Walter Matos',
+      'Gabriel de Souza e Silva',
+      'Arthur de Souza e Silva',
+      'Heitor de Souza e Silva',
+      'Luisa Henrici',
+      'Nathália Nogueira Nunes dos Santos',
+      'Paula Pereira dos Santos',
+      'Olga Queiroz Veridiano',
+      'Dayane Rodrigues',
+      'André Bravo',
+      'Xênia Gabrielle dos Santos',
+      'Davi Lopes',
+      'Rosana Petrilho Coimbra',
+      'Alberto Ferreira Gomes',
+      'Rita de Cássia de Oliveira Costa',
+      'Carlos Nery',
+      'Raquel Bitetti Legey',
+      'Miguel Bitetti Padilha Mira',
+      'Keyla Legey',
+      'Thays Oliveira de Medeiros',
+      'Victor Fernandes de Melo Coutinho',
+      'Rosa Angela de Oliveira',
+      'Paulo Carlos Damião',
+      'Theophilo Damião',
+      'Patrícia Damião',
+      'Luna Damião',
+      'Gael Damião',
+      'Agueda Oliveira',
+      'Mecias Oiveira',
+      'Thiago Martins Guarino',
+      'Elias Antonio Guarino',
+      'Elisete Martins de Oliveira Guarino',
+      'Isabella Martins Guarino',
+      'Cássia Cristina Rozzante Marinonio',
+      'Oseás Cancio dos Santos Nascimento',
+      'Tadeu Marinonio',
+      'Juliana Marinonio',
+      'Betina Marinonio',
+      'Leonardo da Silva Lopes',
+      'Larissa Bittencourt Marinonio',
+      'Elcides Ribeiro Lustosa',
+      'Paulo Roberto Marinonio',
+      'Renato Barros',
+      'Juliana Gonçalves de Souza e Silva',
+      'Pedro de Souza Silva Nascimento',
+      'Bruna de Souza Silva Nascimento',
+      'Marcelo Fernando Martins de Oliveira',
+      'Rosangela Martins de Oliveira',
+      'Marysangela Martins',
+      'Roseli Martins',
+      'Luis Albuquerque Pinto',
+      'Victor Hugo',
+      'Louise Marins',
+      'Jhady Percu',
+      'Luciana Mello Silveira Paixão',
+      'Matheus Parreiras',
+      'Barbara Andrade',
+      'João Miguel Carvalho',
+      'Maria Lúcia Stael',
+      'Luisa Varella Meyer',
+      'Thereza Varella',
+      'Cainho Seoane',
+      'Cátia Barbosa'
     ]
 
     const [filteredGuestNames, setfilteredGuestNames] = useState<string[]>([''])
@@ -136,18 +230,21 @@ export default function Home() {
 
 
     useEffect(()=>{
-      if(IsConfirmed?.success){
+      if(IsConfirmed?.success && !IsConfirming){
         setIsPresenceConfirmed(true)
         setGuestName('')
         setSelectedGuest('')
+
+        setTimeout(()=>{
+          setIsPresenceConfirmed(false)
+        }, 4000)
       }
+
+      
     },
-  [IsConfirmed?.success])
+  [IsConfirmed?.success, IsConfirming])
 
   // simple scroll-to-top button injected into the page
-  useEffect(() => {
-    
-  }, []);
 
   const handleClick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -253,47 +350,45 @@ export default function Home() {
       </div>
 
 
-      <div  className="w-full h-[60svh] mt-[15svh] lg:mt-[15svh] relative">
-        <img src="/images/previa-hero.png" alt="" className="object-[55%] lg:object-top object-cover absolute w-full h-full z-[99999]" />
+      <div  className="w-full h-[60svh] lg:h-[100svh] mt-[15svh] lg:mt-[15svh] relative">
+        <img src="/images/previa-hero.png" alt="" className="object-[55%] lg:object-top object-cover hidden lg:block absolute w-full h-full z-[99999]" />
+        <img src="/images/previa-hero-mobile.png" alt="" className="object-cover absolute lg:hidden w-full h-full z-[99999]" />
+
       </div>
 
       <div className="relative">
-        <img src="/images/green-cloud.png" alt="" className="absolute w-full top-[-200px] sm:top-[-500px] lg:w-[20084.21px] lg:h-[1762.99px] lg:top-[-1050px] z-[9]" />
-        <img src="/images/flowers-right.png" className="right-0 top-[400px] lg:top-[300px] opacity-60 lg:opacity-1 lg:h-full absolute z-[999999999]" alt="" />
+        <img src="/images/green-cloud.png" alt="" className="absolute w-full top-[-200px] opacity-30 sm:top-[-500px] lg:w-[20084.21px] lg:h-[1862.99px] lg:top-[-1100px] z-[9]" />
+        <img src="/images/flowers-right.png" className="right-0 top-[400px] hidden lg:block lg:top-[300px] opacity-60 lg:opacity-30 lg:h-full absolute z-[999999999]" alt="" />
         <img src="/images/flower-division.png" className="w-[250px] lg:w-[350px] mx-auto pt-[4px]" alt="" />
 
         <div className="pb-[60px] px-[16px] flex items-center justify-center relative z-[99999999]">
             
-            <div className="flex justify-center items-center  lg:gap-[24px] bg-[#F8F7F4] text-[#5D6955] py-[15px] px-[20px] lg:py-[30px] lg:px-[40px]">
-              <div className="text-[24px] lg:text-[40px]">
-                <p>Sábado</p>
-                <p> Janeiro</p>
+            <div className="flex justify-center items-center  bg-[#F8F7F4]/30 text-[#5D6955] py-[15px] px-[20px] lg:pb-[30px] lg:px-[40px]">
+              <div className="text-[45px] cinzel-black lg:text-[70px]">
+                <p>03</p>
               </div>
-              <div className="flex items-center px-4">
-                  <div className="h-24 lg:h-36 w-px bg-gray-300" aria-hidden="true" />
+              <div className="text-[14px] lg:text-[18px] px-[8px] ">
+                <p>de</p>
               </div>
-              <div className="cinzel-black text-[62px] lg:text-[90px]">
-                  <p>03</p>
+              <div className="cinzel-black text-[32px] lg:text-[60px]">
+                  <p>Janeiro</p>
               </div>
-              <div className="flex items-center px-4">
-                  <div className="h-24 lg:h-36 w-px bg-gray-300" aria-hidden="true" />
+              <div className="flex items-center px-[16px]">
+                  <div className="h-[47px] lg:h-[70px] w-px bg-gray-300" aria-hidden="true" />
               </div>
-              <div className="text-[24px] lg:text-[40px]">
+              <div className="text-[16px]  lg:text-[24px]">
+                <p>SÁB</p>
                 <p>16h</p>
-                <p>2026</p>
               </div>
             </div>
           </div>
         <div className="relative z-[9999999]">
           <div className="flex flex-col items-center justify-center text-center">
-            <div className="gap-[30px] lg:gap-[54px] px-[16px] flex flex-col">
-              <p className="text-2xl">
+            <div className="gap-[32px] lg:gap-[40px] px-[16px] flex flex-col max-w-[903px]">
+              <p className="text-lg lg:text-[24px]">
                 Com o coração repleto de amor e gratidão,<br /> <b> convidamos você para viver conosco um dos momentos mais especiais da nossa história.</b>
               </p>
-              <div className="flex flex-col gap-[24px] text-base">
-                <p>
-                  Um dia de amor, de risadas, de encontros e de tudo aquilo que faz a vida valer a pena.
-                </p>
+              <div className="flex flex-col text-base gap-[24px] text-base">
                 <p>
                    Cada pedacinho foi pensado com carinho, para que este dia seja inesquecível — não apenas para nós, mas para todos que fazem parte dele.
                 </p>
@@ -308,30 +403,30 @@ export default function Home() {
                 </p>
                 
               </div>
-              <p className="text-base">
+              <p className="text-base lg:text-lg">
                   Esperamos por você para compartilhar esse momento tão especial.
                 </p>
             </div>
           </div>
         
-          <div className="relative flex flex-col items-center justify-center py-24 lg:py-16 text-gray-800 px-[16px]">
-                  <h2 className="text-2xl lg:text-4xl mb-6 text-center">Contagem regressiva para o grande dia</h2>
-                  <div className="flex flex-wrap items-center justify-center gap-[40px] lg:gap-[100px] text-center text-[#5D6955]">
-                    <div className="flex flex-col gap-[8px] flex-0 lg:w-[119px] lg:h-[116px]">
-                      <div className="text-4xl font-bold bg-[#F8F7F4] lg:text-[55px] px-[26px] py-[36px] rounded-[30px] ">{timeLeft.days}</div>
-                      <div className="text-lg uppercase">dias</div>
+          <div className="relative flex flex-col items-center justify-center py-24 lg:pt-[150px] lg:gap-[40px] gap-[24px] lg:py-16 text-gray-800 px-[16px]">
+                  <h2 className="text-[24px] lg:text-[32px] cinzel-bold text-center">Contagem regressiva para o grande dia</h2>
+                  <div className="flex flex-wrap items-center max-w-[200px] lg:max-w-full justify-center gap-[40px] lg:gap-[100px] text-center text-[#5D6955] w-full lg:pt-[40px] pt-[24px]">
+                    <div className="flex flex-col items-center justify-center gap-[8px] w-[80px] h-[105px] lg:w-[119px] lg:h-[116px]" >
+                      <div className="text-[32px] flex items-center justify-center text-center w-[80px] !h-[78px] font-bold bg-[#F8F7F4] grow-0 shrink-0 flex-0 lg:!w-[119px] lg:!h-[116px] lg:text-[55px] lg:px-[32px] lg:px-[32px] px-[24px] py-[24px] rounded-[20px] lg:rounded-[30px] ">{timeLeft.days}</div>
+                      <div className="text-[14px] lg:text-lg w-[80px] h-[19px] uppercase grow-0 shrink-0 lg:w-[119px] flex-0">dias</div>
                     </div>
-                    <div className="flex flex-col gap-[8px] flex-0 lg:w-[119px] lg:h-[116px]">
-                      <div className="text-4xl font-bold bg-[#F8F7F4] lg:text-[55px] px-[26px] py-[36px] rounded-[30px]">{timeLeft.hours}</div>
-                      <div className="text-lg  uppercase">horas</div>
+                    <div className="flex flex-col  items-center justify-center gap-[8px]  lg:!w-[119px] lg:h-[116px]" >
+                      <div className="text-[32px] flex items-center justify-center font-bold bg-[#F8F7F4] w-[80px]  !h-[78px]  lg:!w-[119px] lg:!h-[116px] lg:text-[55px] px-[24px] py-[24px] lg:px-[32px] lg:px-[32px] rounded-[20px] lg:rounded-[30px]">{timeLeft.hours}</div>
+                      <div className="text-[14px] lg:text-lg uppercase grow-0 shrink-0 lg:w-[119px]">horas</div>
                     </div>
-                    <div  className="flex flex-col gap-[8px] flex-0 lg:w-[119px] lg:h-[116px]">
-                      <div className="text-4xl font-bold bg-[#F8F7F4]  lg:text-[55px] px-[26px] py-[36px] rounded-[30px]">{timeLeft.minutes}</div>
-                      <div className="text-lg uppercase">minutos</div>
+                    <div  className="flex flex-col  items-center justify-center gap-[8px] lg:!w-[119px] lg:h-[116px]" >
+                      <div className="text-[32px] flex items-center justify-center font-bold bg-[#F8F7F4] w-[80px]  h-[78px] lg:!w-[119px] lg:!h-[116px] lg:text-[55px] px-[24px] py-[24px]  rounded-[20px] lg:rounded-[30px]">{timeLeft.minutes}</div>
+                      <div className="text-[14px] lg:text-lg uppercase grow-0 shrink-0 lg:w-[119px]">minutos</div>
                     </div>
-                    <div  className="flex flex-col gap-[8px] flex-0 lg:w-[119px] lg:h-[116px]">
-                      <div className="text-4xl font-bold bg-[#F8F7F4]  lg:text-[55px] px-[26px] py-[36px] rounded-[30px]">{timeLeft.seconds}</div>
-                      <div className="text-lg uppercase">segundos</div>
+                    <div  className="flex flex-col  items-center justify-center gap-[8px]  lg:w-[119px] lg:h-[116px]" >
+                      <div className="text-[32px] flex items-center justify-center font-bold bg-[#F8F7F4] w-[80px]  h-[78px] lg:!w-[119px] lg:!h-[116px] lg:text-[55px] px-[24px] py-[24px] rounded-[20px] lg:rounded-[30px]">{timeLeft.seconds}</div>
+                      <div className="text-[14px] lg:text-lg uppercase">segundos</div>
                     </div>
                   </div>
           </div>
@@ -341,11 +436,11 @@ export default function Home() {
 
       <div id='presenca' className="pb-[50px] pt-[150px] lg:py-[150px]">
          <div className="flex flex-col items-center justify-center text-center ">
-            <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
-            <div className="flex flex-col align-center justify-center gap-[45px] px-[16px]">
+            <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[16px]" alt="" />
+            <div className="flex flex-col align-center justify-center lg:gap-[40px] gap-[32px] px-[16px]">
               <div className="flex flex-col align-center justify-center">
                 <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Confirmar Presença</h3>
-                <h4 className="text-[#222420] cinzel-regular text-base pt-[24px] text-center">Digite seu nome e confirme sua presença</h4>
+                <h4 className="text-[#222420] cinzel-regular text-base lg:pt-[16px] pt-[8px] text-center">Digite seu nome e confirme sua presença</h4>
               </div>
               <div className="flex flex-col align-center justify-center lg:w-[668px] lg:gap-[15px]">
                  <form action={formAction} >
@@ -366,8 +461,8 @@ export default function Home() {
                     })} </div> : ''}
                   </div>
                
-                  <button className={`w-full h-[58px] mt-[15px] text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'bg-[#969F90] cursor-pointer text-white font-bold': 'bg-[#EAEAE3]'}`}>
-                    {IsConfirming ? 'Carregando... ' : IsConfirmed?.success ? 'Presença confirmada!' : 'Confirmo minha presença'}
+                  <button disabled={!guestName || IsConfirming ? true : false} className={`w-full h-[58px] mt-[15px] disabled:cursor-not-allowed text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'bg-[#969F90] cursor-pointer text-white font-bold': 'bg-[#EAEAE3]'}`}>
+                    {IsConfirming ? 'Carregando... ' : IsPresenceConfirmed ? 'Presença confirmada!' : 'Confirmo minha presença'}
                   </button>
                 </form>
               </div>
@@ -378,11 +473,11 @@ export default function Home() {
 
        <div id='lista' className="pb-[50px] pt-[150px]">
          <div className="flex flex-col items-center justify-center text-center ">
-            <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
+            <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[16px]" alt="" />
             <div className="flex flex-col align-center justify-center gap-[45px] px-[16px]">
-                <div className="flex flex-col align-center justify-center gap-[20px]">
+                <div className="flex flex-col align-center justify-center gap-[16px]">
                   <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Lista de Presentes</h3>
-                  <h4 className="text-[#222420] cinzel-regular text-base lg:pt-[24px] text-center max-w-[1175px] mx-auto"> Nosso lar já está cheio de amor (e de tudo o que precisamos!). Criamos essa lista divertida para quem desejar nos presentear. <b> O valor será revertido em Pix </b> — um gesto de carinho que fará parte dessa nova fase.</h4>
+                  <h4 className="text-[#222420] cinzel-regular text-base  text-center max-w-[1175px] mx-auto"> Nosso lar já está cheio de amor (e de tudo o que precisamos!). Criamos essa lista divertida para quem desejar nos presentear. <b> O valor será revertido em Pix </b> — um gesto de carinho que fará parte dessa nova fase.</h4>
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-12">
                   {giftList.map((gift)=>{
@@ -408,69 +503,79 @@ export default function Home() {
 
 
 
-        <div id='localizacao' className="py-[150px]">
+        <div id='localizacao' className="pt-[150px]">
           <div className="flex flex-col items-center justify-center text-center px-[16px]">
-              <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
+              <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[16px]" alt="" />
               <div className="flex flex-col align-center justify-center gap-[45px]">
                   <div className="flex flex-col align-center justify-center ">
-                    <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Como Chegar</h3>
-                    <div className="lg:gap-[54px] flex flex-col py-[40px] pt-[24px]">
-                      <div className="flex flex-col gap-[14px] text-base">
-                        <p>
-                          A cerimônia e a festa acontecerão no <b>Solar de Gração</b>, um espaço encantador, cercado pela natureza, localizado na <b>Estrada Caetano Monteiro, 916 — Pendotiba, Niterói - RJ.</b>
-                        </p>
-                        <p>
-                       O local conta com estacionamento, e também é fácil chegar por aplicativo — basta buscar pelo nome do Solar de Gração.
-                        </p>
-                        <p>
-                          <b>As portas estarão abertas a partir das 16h, e a cerimônia terá início pontualmente às 16h30.</b>
-                        </p>
-                        <p>
-                          Tudo foi preparado com carinho para que cada convidado aproveite cada instante desse dia especial.
-                        </p>
+                    <h3 className="lg:text-[32px] text-[24px] font-bold cinzel-bold text-[#222420] text-center">Como Chegar</h3>
+                    <div className="lg:gap-[50px] flex flex-col items-center justify-center ">
+                      <div className="flex flex-col  gap-[32px] text-base lg:pb-[0px] lg:pt-[32px] py-[24px] max-w-[818px]">
+                        <div className="flex items-start gap-[16px] text-left">
+                          <img src={location.src} alt="" />
+                           <p>
+                              A cerimônia e a festa acontecerão no <b>Solar de Gração</b>, localizado na <b>Estrada Caetano Monteiro, 916 — Pendotiba, Niterói - RJ.</b>
+                            </p>
+                        </div>
+                        <div className="flex items-start gap-[16px] text-left">
+                           <img src={car.src} alt="" />
+                            <p>
+                              O local conta com estacionamento, e também é fácil chegar por aplicativo — basta buscar pelo nome do Solar de Gração.
+                            </p>
+                        </div>
+                       <div className="flex items-start gap-[16px] text-left">
+                            <img src={time.src} alt="" />
+                             <p>
+                              <b>As portas estarão abertas a partir das 16h, e a cerimônia terá início pontualmente às 16h30.</b>
+                            </p>
+                       </div>
                      </div>
+                     <p className="lg:text-lg text-[14px] py-[24px]">
+                        Tudo foi preparado com carinho para que cada convidado aproveite cada instante desse dia especial.
+                      </p>
                    </div>
-                  <Maps/>
                   </div>          
               </div>     
             </div>
+         <Maps/>
+
         </div>          
 
 
-         <div id='dicas' className="py-[150px] lg:pb-[200px] px-[16px]">
+         <div id='dicas' className="pt-[150px] lg:pb-[200px] px-[16px]">
             <div className="flex flex-col items-center justify-center text-center ">
-                <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[45px]" alt="" />
+                <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[16px]" alt="" />
                 <div className="flex flex-col align-center justify-center gap-[45px]">
                    <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Dicas</h3>
                 </div>
 
-                <div className="flex flex-wrap text-base items-center pt-[60px] lg:pt-[80px] justify-center gap-[100px] max-w-[1200px]">
+                <div className="flex flex-wrap text-base items-center pt-[32px] lg:pt-[80px] justify-center gap-[32px] lg:gap-[50px] max-w-[1200px]">
 
-                  <div className="flex gap-[24px] text-left max-w-[450px]">
-                    <img src={dressCode.src} alt="" />
+                  <div className="flex gap-[24px] items-start text-left max-w-[450px]">
+                    <img src={dressCode.src} alt="" className="w-[60px]" />
                     <p>
                      <b>Dress Code</b> : Esporte Fino.
                       Não é necessário usar paletó (é verão!). Para os vestidos, podem ser midi ou longo — escolha o que fizer você se sentir incrível!
                     </p>
                   </div>
 
-                  <div className="flex gap-[24px] text-left  max-w-[450px]">
-                    <img src={dressCode2.src} alt="" />
+                  <div className="flex gap-[24px] items-start text-left  max-w-[450px]">
+                    <img src={dressCode2.src} alt=""  className="w-[60px]"/>
                     <p>
                      <b>O verde e o marrom foram escolhidos para as madrinhas e os padrinhos, </b> respectivamente. Por isso, pedimos gentilmente que os convidados optem por outras cores.
                     </p>
                   </div>
 
-                  <div className="flex gap-[24px] text-left  max-w-[450px]">
-                    <img src={dressCode3.src} alt="" />
+                  <div className="flex gap-[24px] items-start text-left  max-w-[450px]">
+                    <img src={dressCode3.src} alt=""  className="w-[60px]"/>
                     <p>
                      <b>Evite usar vestidos brancos, off white ou nude. </b> Queremos reservar essas cores especiais só para a noiva.
                     </p>
                   </div>
 
 
-                  <div className="flex gap-[24px] text-left  max-w-[450px]">
-                    <img src={dressCode4.src} alt="" />
+                  <div className="flex gap-[24px] items-start text-left  max-w-[450px]">
+                    <img src={dressCode4.src} alt=""  className="w-[60px]"/>
                     <p>
                     <b> Aproveitem o grande dia!</b> Curtam cada momento, celebrem com alegria e façam parte dessa festa tão especial ao nosso lado.
                     </p>
