@@ -440,8 +440,8 @@ export default function Home() {
             <div className="flex flex-col align-center justify-center lg:gap-[40px] gap-[32px] px-[16px]">
               <div className="flex flex-col align-center justify-center">
                 <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Confirmar Presença</h3>
-                <h4 className="text-[#222420] cinzel-regular text-base lg:pt-[16px] pt-[8px] text-center">
-                   Busque seu nome, selecione-o na lista que aparecer e, em seguida, clique no botão para confirmar sua presença.
+                <h4 className="text-[#222420] cinzel-regular text-base lg:pt-[16px]  lg:w-[668px] pt-[8px] text-center">
+                   Busque seu nome, <b> selecione-o na lista que aparecer </b> e, em seguida, clique no botão para confirmar sua presença.
                 </h4>
               </div>
               <div className="flex flex-col align-center justify-center lg:w-[668px] lg:gap-[15px]">
