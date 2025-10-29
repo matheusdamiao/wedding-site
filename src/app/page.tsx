@@ -461,9 +461,32 @@ export default function Home() {
                     })} </div> : ''}
                   </div>
                
-                  <button disabled={!guestName || IsConfirming ? true : false} className={`w-full h-[58px] mt-[15px] disabled:cursor-not-allowed text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'bg-[#969F90] cursor-pointer text-white font-bold': 'bg-[#EAEAE3]'}`}>
+                  {/* <button disabled={!guestName || IsConfirming ? true : false} className={`w-full h-[58px] mt-[15px] disabled:cursor-not-allowed text-lg ${selectedGuest !== '' && selectedGuest == guestName ? 'bg-[#969F90] cursor-pointer text-white font-bold': 'bg-[#EAEAE3]'}`}>
                     {IsConfirming ? 'Carregando... ' : IsPresenceConfirmed ? 'Presença confirmada!' : 'Confirmo minha presença'}
-                  </button>
+                  </button> */}
+   
+                  <button
+                  disabled={!selectedGuest || IsConfirming ? true : false}
+                  className={`w-full h-[58px] mt-[15px] disabled:cursor-not-allowed text-lg ${
+                    selectedGuest !== "" && selectedGuest == guestName
+                      ? "bg-[#969F90] cursor-pointer text-white font-bold"
+                      : "bg-[#EAEAE3]"
+                  }`}
+                >
+                  {IsConfirming
+                    ? "Carregando... "
+                    : IsPresenceConfirmed
+                    ? "Presença confirmada!"
+                    : "Confirmo minha presença"}
+                      </button>
+                   {guestName !== selectedGuest ? (
+                     <p className="text-red-500 text-[14px] pt-[8px]">
+                       Por favor, selecione seu nome na lista.
+                     </p>
+                   ) : (
+                     ""
+                   )}
+                    
                 </form>
               </div>
             </div>
