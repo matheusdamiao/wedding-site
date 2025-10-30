@@ -157,7 +157,9 @@ export default function Home() {
       'Luisa Varella Meyer',
       'Thereza Varella',
       'Cainho Seoane',
-      'Cátia Barbosa'
+      'Cátia Barbosa',
+      'Marcela Martins Dassie',
+      'Matheus dos Santos Dassie'
     ]
 
     const [filteredGuestNames, setfilteredGuestNames] = useState<string[]>([''])
@@ -409,7 +411,7 @@ export default function Home() {
             </div>
           </div>
         
-          <div className="relative flex flex-col items-center justify-center py-24 lg:pt-[150px] lg:gap-[40px] gap-[24px] lg:py-16 text-gray-800 px-[16px]">
+          <div className="relative flex flex-col items-center justify-center pt-[150px] py-24 lg:pt-[150px] lg:gap-[40px] gap-[24px] lg:py-16 text-gray-800 px-[16px]">
                   <h2 className="text-[24px] lg:text-[32px] cinzel-bold text-center">Contagem regressiva para o grande dia</h2>
                   <div className="flex flex-wrap items-center max-w-[200px] lg:max-w-full justify-center gap-[40px] lg:gap-[100px] text-center text-[#5D6955] w-full lg:pt-[40px] pt-[24px]">
                     <div className="flex flex-col items-center justify-center gap-[8px] w-[80px] h-[105px] lg:w-[119px] lg:h-[116px]" >
@@ -533,7 +535,7 @@ export default function Home() {
               <img src="/images/flower-division.png" className="w-[250px] pt-[4px] pb-[16px]" alt="" />
               <div className="flex flex-col align-center justify-center gap-[45px]">
                   <div className="flex flex-col align-center justify-center ">
-                    <h3 className="lg:text-[32px] text-[24px] font-bold cinzel-bold text-[#222420] text-center">Como Chegar</h3>
+                    <h3 className="text-[32px] font-bold cinzel-bold text-[#222420] text-center">Como Chegar</h3>
                     <div className="lg:gap-[50px] flex flex-col items-center justify-center ">
                       <div className="flex flex-col  gap-[32px] text-base lg:pb-[0px] lg:pt-[32px] py-[24px] max-w-[818px]">
                         <div className="flex items-start gap-[16px] text-left">
