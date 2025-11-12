@@ -102,7 +102,7 @@ export default function Home() {
       'Luisa Henrici',
       'Nathália Nogueira Nunes dos Santos',
       'Paula Pereira dos Santos',
-      'Olga Queiroz Veridiano',
+      'Lucas Carpes',
       'Dayane Rodrigues',
       'André Bravo',
       'Xênia Gabrielle dos Santos',
@@ -159,7 +159,15 @@ export default function Home() {
       'Cainho Seoane',
       'Cátia Barbosa',
       'Marcela Martins Dassie',
-      'Matheus dos Santos Dassie'
+      'Matheus dos Santos Dassie',
+      'Marcus Caetano',
+      'Michele Medeiros',
+      'Jacqueline Vasconcellos',
+      'José Mauro Vasconcellos',
+      'Karine Villela',
+      'Roberto Monnerat',
+      'Yasmin Seoane',
+      'Eric Bernard'
     ]
 
     const [filteredGuestNames, setfilteredGuestNames] = useState<string[]>([''])
