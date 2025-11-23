@@ -168,7 +168,11 @@ export default function Home() {
       'Roberto Monnerat',
       'Yasmin Seoane',
       'Eric Bernard',
-      'Joaquim Isaac Guimarães Candido'
+      'Joaquim Isaac Guimarães Candido',
+      'Gisele Campos',
+      'Gabriela Campos',
+      'Rafaela Campos',
+      'Otaviano Martins'     
     ]
 
     const [filteredGuestNames, setfilteredGuestNames] = useState<string[]>([''])
