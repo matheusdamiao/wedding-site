@@ -172,7 +172,11 @@ export default function Home() {
       'Gisele Campos',
       'Gabriela Campos',
       'Rafaela Campos',
-      'Otaviano Martins'     
+      'Otaviano Martins',
+      'Anselmo Martins de Oliveira',
+      'Roberta Guedes Barreto',
+      'Maria Fernanda Barreto de Oliveira',
+      'Davi Felipe Barreto de Oliveira'     
     ]
 
     const [filteredGuestNames, setfilteredGuestNames] = useState<string[]>([''])
